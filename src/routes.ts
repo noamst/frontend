@@ -9,6 +9,7 @@ export type IRoutesModel<T = any> = {
   text: string;
   activeNames: string[];
   Component: ComponentType<T>;
+  children?: IRoutesModel<T>[]; // optional for nested routes
 };
 
 export const routes: IRoutesModel[] = [
@@ -17,6 +18,27 @@ export const routes: IRoutesModel[] = [
     text: 'Home',
     activeNames: ['/home', '/'],
     Component: HomePage,
+    children: [
+      // Example nested route
+      {
+        to: '/home/subpage',
+        text: 'Subpage',
+        activeNames: ['/home/subpage'],
+        Component: HomePage,
+      },
+      {
+        to: '/home/subpage2',
+        text: 'Subpage2',
+        activeNames: ['/home/subpage2'],
+        Component: HomePage,
+      },
+      {
+        to: '/home/subpage3',
+        text: 'Subpage3',
+        activeNames: ['/home/subpage2'],
+        Component: HomePage,
+      },
+    ],
   },
   {
     to: '/redux',

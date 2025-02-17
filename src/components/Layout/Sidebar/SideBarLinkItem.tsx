@@ -1,18 +1,27 @@
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { IRoutesModel } from '@src/routes';
+import { Link, useLocation } from 'react-router-dom';
+// Import your module styles
+import styles from './Sidebar.module.scss';
+interface SidebarItemProps {
+  route: IRoutesModel;
+}
 
-type SideBarLinkItemProps = {
-  to: string;
-  text: string;
-  isActive?: boolean;
-};
-
-export default function SideBarLinkItem(props: SideBarLinkItemProps) {
-  const { to, text, isActive } = props;
+export default function SidebarItem({ route }: SidebarItemProps) {
+  const location = useLocation();
+  const isActive = route.activeNames.includes(location.pathname);
 
   return (
-    <Link to={to} className={clsx('text-lg hover:text-red-500 active:text-red-400', isActive && 'font-bold')}>
-      {text}
-    </Link>
+    <div className={`${styles.sidebaritem} ${isActive ? styles.active : ''}`}>
+      <Link to={route.to}>{route.text}</Link>
+
+      {/* Recursively render children if available */}
+      {route.children && route.children.length > 0 && (
+        <div className={styles.sidebarsubmenu}>
+          {route.children.map((child) => (
+            <SidebarItem key={child.to} route={child} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
