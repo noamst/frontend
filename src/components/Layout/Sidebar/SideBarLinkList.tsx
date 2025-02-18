@@ -3,10 +3,9 @@ import SideBarLinkItem from './SideBarLinkItem';
 import DarkModeToggle from '@src/components/DarkModeToggle';
 import HomePage from '@src/pages/Home';
 
-
-export interface SidebarItemProps{
-  route:IRoutesModel
-  children?: IRoutesModel[] // optional for nested routes
+export interface SidebarItemProps {
+  route: IRoutesModel;
+  children?: IRoutesModel[]; // optional for nested routes
 }
 
 export default function SideBarLinkList() {

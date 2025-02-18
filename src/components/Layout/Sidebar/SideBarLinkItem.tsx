@@ -1,15 +1,13 @@
-
 import { Link, useLocation } from 'react-router-dom';
 // Import your module styles
 import styles from './Sidebar.module.scss';
 import { SidebarItemProps } from './SideBarLinkList';
 
-
 export default function SidebarItem(props: SidebarItemProps) {
   const { route, children } = props;
- 
+
   const location = useLocation();
-    const isActive = route.activeNames.includes(location.pathname);
+  const isActive = route.activeNames.includes(location.pathname);
 
   return (
     <div className={`${styles.sidebaritem} ${isActive ? styles.active : ''}`}>
@@ -18,7 +16,7 @@ export default function SidebarItem(props: SidebarItemProps) {
       {/* Recursively render children if available */}
       {children && children.length > 0 && (
         <div className={styles.sidebarsubmenu}>
-          {children.map((child , index) => (
+          {children.map((child, index) => (
             <SidebarItem key={index} route={child} />
           ))}
         </div>

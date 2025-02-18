@@ -20,7 +20,7 @@ export default function Sidebar() {
         className='absolute right-0 top-1/2 size-8 translate-x-1/2 rounded-full bg-blue-400 p-2 opacity-20 hover:opacity-100'
       ></button>
 
-      {isSidebarOpen && <SideBarLinkList /> }
+      {isSidebarOpen && <SideBarLinkList />}
     </nav>
   );
 }

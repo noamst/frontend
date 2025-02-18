@@ -17,7 +17,6 @@ export const routes: IRoutesModel[] = [
     text: 'Home',
     activeNames: ['/home', '/'],
     Component: HomePage,
-    
   },
   {
     to: '/redux',
